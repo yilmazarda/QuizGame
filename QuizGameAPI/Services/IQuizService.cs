@@ -8,9 +8,11 @@ namespace QuizGameAPI.Services
 {
     public interface IQuizService
     {
-        Task<Quiz> AddQuizAsync(Quiz game);
+        Task<Quiz> AddQuizAsync(Quiz quiz);
         Task<bool> DeleteQuizAsync(int id);
         Task<List<Quiz>> GetQuizzesAsync();
         Task<Quiz> GetQuizByIdAsync(int id);
+
+        Task<Quiz> UpdateQuizAsync(Quiz quiz);
     }
 }

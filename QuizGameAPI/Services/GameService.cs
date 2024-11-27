@@ -16,9 +16,10 @@ namespace QuizGameAPI.Services
             _gameRepository = gameRepository;
         }
 
-        public async Task AddGameAsync(Game game)
+        public async Task<Game> AddGameAsync(Game game)
         {
             await _gameRepository.AddAsync(game);
+            return game;
         }
 
         public async Task<bool> DeleteGameAsync(int id)
@@ -32,6 +33,17 @@ namespace QuizGameAPI.Services
         public async Task<IEnumerable<Game>> GetGamesAsync()
         {
             return await _gameRepository.GetAsync();
+        }
+
+        public async Task<Game> GetGameByIdAsync(int id)
+        {
+            Game? game = await _gameRepository.GetByIdAsync(id);
+            if (game == null)
+            {
+                throw new KeyNotFoundException($"Game with id {id} not found.");
+            }
+
+            return game;
         }
     }
 }

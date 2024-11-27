@@ -50,5 +50,15 @@ namespace QuizGameAPI.Controllers
             await _quizService.DeleteQuizAsync(id);
             return NoContent();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateQuiz(Quiz quiz)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            await _quizService.UpdateQuizAsync(quiz);
+
+            return Ok(quiz);
+        }
     }
 }

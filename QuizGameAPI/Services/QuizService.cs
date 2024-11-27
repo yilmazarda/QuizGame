@@ -58,5 +58,12 @@ namespace QuizGameAPI.Services
 
             return quiz;
         }
+
+        public async Task<Quiz> UpdateQuizAsync(Quiz quiz)
+        {
+            await _quizRepository.UpdateAsync(quiz);
+
+            return quiz;
+        }
     }
 }
